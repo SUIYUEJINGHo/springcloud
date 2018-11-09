@@ -1,1 +1,1 @@
-
+management:  endpoint:    health:      show-details: always  server:    servlet:      context-path: /cat    port: 9001  endpoints:    web:      base-path: /tom      exposure:        include: '*'
