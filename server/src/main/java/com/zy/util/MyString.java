@@ -56,5 +56,7 @@ public final class MyString implements java.io.Serializable {
         MyString a = new MyString("aaa");
         MyString b = new MyString("aab");
         System.out.println(a.equals(b));
+
+
     }
 }
