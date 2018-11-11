@@ -17,7 +17,6 @@ public final class MyString implements java.io.Serializable {
     public MyString(String content) {
         this.value = content.toCharArray();
     }
-
     /**
      * Method : 对比两个字符串内容
      *
