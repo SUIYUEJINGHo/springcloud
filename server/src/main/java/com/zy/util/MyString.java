@@ -14,9 +14,16 @@ public final class MyString implements java.io.Serializable {
     // 用于存储字符串信息
     private char value[];
 
-    public MyString(String content) {
-        this.value = content.toCharArray();
+    private int hash;
+
+    public MyString(String value) {
+        this.value = value.toCharArray();
     }
+
+    public MyString(char[] value){
+        this.value = value;
+    }
+
     /**
      * Method : 对比两个字符串内容
      *
@@ -51,9 +58,48 @@ public final class MyString implements java.io.Serializable {
         return false;
     }
 
-    public static void main(String[] args) {
-        MyString a = new MyString("aaa");
-        MyString b = new MyString("aab");
-        System.out.println(a.equals(b));
+    /**
+     * Method : 重写一个针对String的hashCode方法 因为要判断每个字母所以用到了char的特性
+     * <p>
+     * char ：特性和一个数字相加减乘除的时候可以将这个字符串转换成acs码表对应的数字
+     * 31 * 本身 + 字符串ars码表
+     *
+     * @return
+     */
+    public int getHashCode() {
+        int h = hash;
+        // 判断是否有内容
+        if (hash == 0 && this.value.length > 0) {
+            char c[] = value;
+            for (int i = 0; i < this.value.length; i++) {
+                h = 31 * h + c[i];
+            }
+        }
+        return h;
     }
+
+    /**
+     * Method : 将字符串转换成char数组
+     *
+     * @return
+     */
+    public char[] toCharArray() {
+        char result[] = new char[value.length];
+        System.arraycopy(value, 0, result, 0, value.length);
+        return result;
+    }
+
+    public static void main(String[] args) {
+        MyString my = new MyString("aaa");
+        System.out.println(my.getHashCode());
+        System.out.println( my.toCharArray());
+
+        char ac[] = {'a','b'};
+        String  a = new String(ac);
+        System.out.println(a);
+
+        MyString n = new MyString(ac);
+        System.out.println(n);
+    }
+
 }
