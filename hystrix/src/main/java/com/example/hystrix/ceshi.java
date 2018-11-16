@@ -1,0 +1,1 @@
+/* * Copyright (C) 2018 Baidu, Inc. All Rights Reserved. */package com.example.hystrix;import org.springframework.stereotype.Service;/** * Created by v_zhuangyan on 2018/11/16. */@Servicepublic class ceshi {    public String getInfo() {        return "this is win";    }}
